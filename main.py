@@ -23,3 +23,28 @@ class Tree:
             else:
                 self.right.insert(key)
             
+    def search(self, key):
+        if self.data == key:
+            return True
+        elif key < self.data:
+            if self.left is None:
+                return False
+            else:
+                return self.left.search(key)   
+        else:
+            if self.right is None:
+                return False
+            else:
+                return self.right.search(key)
+        
+root = Tree(15)
+root.insert(13)
+root.insert(17)
+root.insert(7)
+root.insert(3)
+root.insert(9)
+root.insert(4)
+print(f'The inorder traversal is: ')
+root.inorder_traversal()
+key = int(input('\nWhat value do you want to search? '))
+print(root.search(key))
